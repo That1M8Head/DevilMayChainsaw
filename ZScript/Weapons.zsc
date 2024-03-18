@@ -1,3 +1,5 @@
+const SWITCH_SPEED = 20;
+
 class DMC_BaseWeapon : Weapon
 {
     Default
@@ -5,29 +7,13 @@ class DMC_BaseWeapon : Weapon
         +WEAPON.AMMO_OPTIONAL;
         +WEAPON.ALT_AMMO_OPTIONAL;
     }
-    States
-    {
-        Ready:
-            TNT1 A 1; // to be overridden
-            Loop;
-        Deselect:
-            #### # 1 A_Lower(20);
-            Loop;
-        Select:
-            #### # 1 A_Raise(20);
-            Loop;
-        Fire:
-            TNT1 A 1; // to be overridden
-            Goto Ready;
-    }
 }
 
 class DMC_Chainsaw : DMC_BaseWeapon
 {
 	Default
 	{
-		Weapon.Kickback 0;
-		Weapon.SelectionOrder 2200;
+		Weapon.SelectionOrder 1;
 		Weapon.UpSound "weapons/sawup";
 		Weapon.ReadySound "weapons/sawidle";
 		Inventory.PickupMessage "$GOTCHAINSAW";
@@ -38,20 +24,64 @@ class DMC_Chainsaw : DMC_BaseWeapon
 	States
 	{
         Ready:
-            SAWG CD 4 A_WeaponReady;
+            SAWG CD 4 A_WeaponReady();
             Loop;
         Deselect:
-            SAWG C 0;
-            Goto Super::Deselect;
+            SAWG C 1 A_Lower(SWITCH_SPEED);
+            Loop;
         Select:
-            SAWG C 0;
-            Goto Super::Select;
+            SAWG C 1 A_Raise(SWITCH_SPEED);
+            Loop;
         Fire:
-            SAWG AB 2 A_Saw;
-            SAWG B 0 A_ReFire;
+            SAWG AABB 1 {
+                A_Saw();
+                A_WeaponReady(WRF_NOFIRE);
+            }
+            SAWG B 0 A_ReFire();
             Goto Ready;
         Spawn:
             CSAW A -1;
             Stop;
 	}
+}
+
+class DMC_Pistol : DMC_BaseWeapon
+{
+	Default
+	{
+        Weapon.Kickback 1500;
+		Weapon.SelectionOrder 2;
+		Obituary "$OB_MPPISTOL";
+		Tag "$TAG_PISTOL";
+	}
+	States
+	{
+        Ready:
+            PISG A 1 A_WeaponReady();
+            Loop;
+        Deselect:
+            PISG A 1 A_Lower(SWITCH_SPEED);
+            Loop;
+        Select:
+            PISG A 1 A_Raise(SWITCH_SPEED);
+            Loop;
+        Fire:
+            PISG AAAA 1 A_WeaponReady(WRF_NOFIRE);
+            PISG B 6 {
+                A_FirePistol();
+                A_WeaponReady(WRF_NOFIRE);
+            }
+            PISG CCCC 1 A_WeaponReady(WRF_NOFIRE);
+            PISG BBBBB 1 {
+                A_ReFire();
+                A_WeaponReady(WRF_NOFIRE);
+            }
+            Goto Ready;
+        Flash:
+            PISF A 7 Bright A_Light1();
+            Goto LightDone;
+        Spawn:
+            PIST A -1;
+            Stop;
+       }
 }

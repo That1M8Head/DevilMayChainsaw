@@ -1,4 +1,5 @@
 version "4.11.0"
 
 #include "ZScript/Player.zsc"
+#include "ZScript/QuickSwap.zsc"
 #include "ZScript/Weapons.zsc"

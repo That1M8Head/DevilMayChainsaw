@@ -1,0 +1,58 @@
+class LastWeaponHandler : StaticEventHandler
+{
+	string last_weapon;
+	string current_weapon;
+
+	override void NetworkProcess(ConsoleEvent e)
+	{
+		if (e.Name == "quickswap") {
+			SwitchWeapon();
+		}
+	}
+
+	string GetDefaultWeapon()
+	{
+		return "DMC_Pistol";
+	}
+
+	string GetWeapon()
+	{
+		PlayerPawn player = players[consoleplayer].mo;
+
+		if (player.player.ReadyWeapon == null) {
+			return "";
+		}
+
+		return player.player.ReadyWeapon.GetClassName();
+	}
+
+	override void WorldTick()
+	{
+		PlayerPawn player = players[consoleplayer].mo;
+
+		if (player.player.ReadyWeapon == null) {
+			return;
+		}
+
+		if (current_weapon != GetWeapon()) {
+			last_weapon = current_weapon;
+		}
+
+		if (last_weapon == "") {
+			last_weapon = GetDefaultWeapon();
+		}
+
+		current_weapon = GetWeapon();
+	}
+
+	void SwitchWeapon()
+	{
+		PlayerPawn player = players[consoleplayer].mo;
+
+		if (!player.CountInv(last_weapon)) {
+			last_weapon = GetDefaultWeapon();
+		}
+
+		player.A_SelectWeapon(last_weapon);
+	}
+}

@@ -1,6 +1,7 @@
 gameinfo
 {
     PlayerClasses = "DMC_Player"
+    EventHandlers = "LastWeaponHandler"
 }
 
 clearskills
