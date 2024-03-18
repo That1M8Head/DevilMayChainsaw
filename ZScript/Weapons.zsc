@@ -1,0 +1,17 @@
+class DMC_BaseWeapon : Weapon
+{
+    Default
+    {
+        +WEAPON.AMMO_OPTIONAL;
+        +WEAPON.ALT_AMMO_OPTIONAL;
+    }
+    States
+    {
+        Deselect:
+            #### # 1 A_Lower(20);
+            Loop;
+        Select:
+            #### # 1 A_Raise(20);
+            Loop;
+    }
+}
