@@ -11,6 +11,9 @@ ListMenu "MainMenu"
 
 ListMenu "DataMenu"
 {
+	CenterMenu
+    Position 0, 100
+	Font "BIGFONT", "Gray", "White"
 	TextItem "$MENU_LOAD", "l", "LoadGameMenu"
 	TextItem "$MENU_SAVE", "s", "SaveGameMenu"
 }

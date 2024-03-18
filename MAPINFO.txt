@@ -1,0 +1,44 @@
+clearskills
+
+skill 1
+{
+    DamageFactor = 0.5
+    MonsterHealth = 0.50
+    SpawnFilter = Hard
+    Name = "$SKILL_EASY"
+    MustConfirm = "$CONFIRM_EASY"
+}
+
+skill 2
+{
+    SpawnFilter = Hard
+    Name = "$SKILL_MEDIUM"
+    MustConfirm = "$CONFIRM_MEDIUM"
+}
+
+skill 3
+{
+    DamageFactor = 1.5
+    MonsterHealth = 1.25
+    SpawnFilter = Nightmare
+    Name = "$SKILL_HARD"
+    MustConfirm = "$CONFIRM_HARD"
+}
+
+skill 4
+{
+    DamageFactor = 3
+    MonsterHealth = 2
+    SpawnFilter = Nightmare
+    Name = "$SKILL_NIGHTMARE"
+    MustConfirm = "$CONFIRM_NIGHTMARE"
+}
+
+skill 5
+{
+    DamageFactor = 99999
+    MonsterHealth = 0.00001
+    SpawnFilter = Nightmare
+    Name = "$SKILL_IMPOSSIBLE"
+    MustConfirm = "$CONFIRM_IMPOSSIBLE"
+}
