@@ -12,8 +12,8 @@ class DMC_Player : PlayerPawn
 		PainChance 255;
 		Player.DisplayName "Marine";
 		Player.CrouchSprite "PLYC";
-		Player.StartItem "Chainsaw";
-		Player.WeaponSlot 1, "Chainsaw";
+		Player.StartItem "DMC_Chainsaw";
+		Player.WeaponSlot 1, "DMC_Chainsaw";
 		Player.WeaponSlot 2, "Pistol";
 		Player.WeaponSlot 3, "Shotgun", "SuperShotgun";
 		Player.WeaponSlot 4, "Chaingun";

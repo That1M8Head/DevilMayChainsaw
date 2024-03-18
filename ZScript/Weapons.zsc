@@ -7,11 +7,51 @@ class DMC_BaseWeapon : Weapon
     }
     States
     {
+        Ready:
+            TNT1 A 1; // to be overridden
+            Loop;
         Deselect:
             #### # 1 A_Lower(20);
             Loop;
         Select:
             #### # 1 A_Raise(20);
             Loop;
+        Fire:
+            TNT1 A 1; // to be overridden
+            Goto Ready;
     }
+}
+
+class DMC_Chainsaw : DMC_BaseWeapon
+{
+	Default
+	{
+		Weapon.Kickback 0;
+		Weapon.SelectionOrder 2200;
+		Weapon.UpSound "weapons/sawup";
+		Weapon.ReadySound "weapons/sawidle";
+		Inventory.PickupMessage "$GOTCHAINSAW";
+		Obituary "$OB_MPCHAINSAW";
+		Tag "$TAG_CHAINSAW";
+		+WEAPON.MELEEWEAPON;
+	}
+	States
+	{
+        Ready:
+            SAWG CD 4 A_WeaponReady;
+            Loop;
+        Deselect:
+            SAWG C 0;
+            Goto Super::Deselect;
+        Select:
+            SAWG C 0;
+            Goto Super::Select;
+        Fire:
+            SAWG AB 2 A_Saw;
+            SAWG B 0 A_ReFire;
+            Goto Ready;
+        Spawn:
+            CSAW A -1;
+            Stop;
+	}
 }
