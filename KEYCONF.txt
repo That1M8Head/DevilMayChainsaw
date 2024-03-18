@@ -1,0 +1,3 @@
+addkeysection "Devil May Chainsaw" dmchainsaw
+addmenukey "Last Used Weapon" "netevent quickswap"
+defaultbind Q "netevent quickswap"
