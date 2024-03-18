@@ -4,6 +4,11 @@ gameinfo
     EventHandlers = "LastWeaponHandler"
 }
 
+map TITLEMAP "Devil May Chainsaw"
+{
+    music = "titlemus"
+}
+
 clearskills
 
 skill 1

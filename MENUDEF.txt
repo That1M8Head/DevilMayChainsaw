@@ -2,7 +2,7 @@ ListMenu "MainMenu"
 {
 	CenterMenu
     Position 0, 100
-	Font "BIGFONT", "Gray", "White"
+	Font "BIGFONT", "DarkGray", "White"
     TextItem "$MENU_DATA", "d", "DataMenu"
 	TextItem "$MENU_NEWGAME", "n", "PlayerClassMenu"
 	TextItem "$MENU_OPTIONS", "o", "OptionsMenu"
