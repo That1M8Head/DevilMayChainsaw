@@ -8,11 +8,11 @@ MENU_QUIT = "EXIT";
 MENU_LOAD = "LOAD DATA";
 MENU_SAVE = "SAVE DATA";
 
-SKILL_EASY = "Human";
-SKILL_MEDIUM = "Demon Hunter";
-SKILL_HARD = "Slayer Of DOOM";
-SKILL_NIGHTMARE = "Doomguy Must Die!";
-SKILL_IMPOSSIBLE = "Urdak and Jekkad";
+SKILL_EASY = "Human"; // a direct reference to the "Human" difficulty in DMC4 and 5
+SKILL_MEDIUM = "Demon Hunter"; // references DMC's "Devil Hunter" difficulty
+SKILL_HARD = "Slayer Of DOOM"; // references DMC's "Son of Sparda" difficulty
+SKILL_NIGHTMARE = "Doomguy Must Die!"; // references DMC's "Dante Must Die!" difficulty
+SKILL_IMPOSSIBLE = "Urdak or Jekkad"; // references DMC's "Heaven or Hell" difficulty
 
 CONFIRM_EASY = "50% monster health, 50% damage factor.\nRecommended for players new to Devil May Chainsaw.";
 CONFIRM_MEDIUM = "100% monster health, 100% damage factor.\nRecommended for Devil May Chainsaw veterans.";
