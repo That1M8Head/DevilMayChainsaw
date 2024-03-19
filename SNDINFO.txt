@@ -1,1 +1,3 @@
 dm_chainsaw/intro   title
+
+dm_chainsaw/weapons/shotgun/reload  shtgrlod

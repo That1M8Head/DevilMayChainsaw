@@ -16,7 +16,8 @@ class DMC_Player : PlayerPawn
 		Player.StartItem "DMC_Pistol";
 		Player.WeaponSlot 1, "DMC_Chainsaw";
 		Player.WeaponSlot 2, "DMC_Pistol";
-		Player.WeaponSlot 3, "Shotgun", "SuperShotgun";
+		Player.WeaponSlot 3, "DMC_Shotgun";
+        // replace the below with DMChainsaw weapons
 		Player.WeaponSlot 4, "Chaingun";
 		Player.WeaponSlot 5, "RocketLauncher";
 		Player.WeaponSlot 6, "PlasmaRifle";

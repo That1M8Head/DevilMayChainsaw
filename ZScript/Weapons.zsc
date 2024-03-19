@@ -66,7 +66,7 @@ class DMC_Pistol : DMC_BaseWeapon
             PISG A 1 A_Raise(SWITCH_SPEED);
             Loop;
         Fire:
-            PISG AAAA 1 A_WeaponReady(WRF_NOFIRE);
+            PISG A 4;
             PISG B 6 {
                 A_FirePistol();
                 A_WeaponReady(WRF_NOFIRE);
@@ -84,4 +84,46 @@ class DMC_Pistol : DMC_BaseWeapon
             PIST A -1;
             Stop;
        }
+}
+
+class DMC_Shotgun : DMC_BaseWeapon replaces Shotgun
+{
+	Default
+	{
+        Weapon.Kickback 2500;
+		Weapon.SelectionOrder 3;
+		Inventory.PickupMessage "$GOTSHOTGUN";
+		Obituary "$OB_MPSHOTGUN";
+		Tag "$TAG_SHOTGUN";
+	}
+	States
+	{
+        Ready:
+            SHT2 A 1 A_WeaponReady();
+            Loop;
+        Deselect:
+            SHT2 A 1 A_Lower(SWITCH_SPEED);
+            Loop;
+        Select:
+            SHT2 A 1 A_Raise(SWITCH_SPEED);
+            Loop;
+        Fire:
+            SHT2 A 3;
+            SHT2 A 8 A_FireShotgun2();
+            SHT2 BC 5;
+            SHT2 C 1 A_WeaponReady(WRF_NOFIRE);
+            TNT1 A 0 A_StartSound("dm_chainsaw/weapons/shotgun/reload", CHAN_WEAPON);
+            SHT2 DDD 1 A_WeaponReady(WRF_NOFIRE);
+            SHT2 CCCCCBBBBB 1 A_WeaponReady(WRF_NOFIRE);
+            SHT2 AAA 1 A_WeaponReady(WRF_NOFIRE);
+            SHT2 A 3 A_ReFire();
+            Goto Ready;
+        Flash:
+            SHT2 I 3 Bright A_Light1();
+            SHT2 J 2 Bright A_Light2();
+            Goto LightDone;
+        Spawn:
+            SGN2 A -1;
+            Stop;
+    }
 }
